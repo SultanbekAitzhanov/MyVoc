@@ -9,14 +9,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="006df0bd-a232-439d-a568-b0103ff02bc9" name="Changes" comment="MV-0001 | added groups list API">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordCardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="006df0bd-a232-439d-a568-b0103ff02bc9" name="Changes" comment="MV-0001 | added implementation of getting group code list">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/CharacterEncodingFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/AnswerResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/GroupStatisticsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordMeaningDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordMeaningMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordMeaningMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/backflashcard.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/flash_card.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/word.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/MyVocDispatcherServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/MyVocDispatcherServletInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/RootConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordLearningState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordLearningState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordCardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordCardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/VocabularyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/VocabularyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/impl/VocabularyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/impl/VocabularyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groups.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groups.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +49,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="CSS File" />
         <option value="Jsp File" />
         <option value="Class" />
       </list>
@@ -50,6 +73,11 @@
     <option name="currentCommit" value="1" />
     <option name="onto" value="6a85024e6f7de74cd167c5f0ea535bb4f0951c9d" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-11.0.11/lib/src.zip!/java.sql/java/sql/ResultSet.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/5.2.1.RELEASE/spring-jdbc-5.2.1.RELEASE.jar!/org/springframework/jdbc/core/ResultSetExtractor.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/5.2.1.RELEASE/spring-jdbc-5.2.1.RELEASE.jar!/org/springframework/jdbc/core/RowCallbackHandler.class" root0="SKIP_INSPECTION" />
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -63,13 +91,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="C:\Users\sulta\.m2\settings.xml" />
       </MavenGeneralSettings>
-    </option>
-    <option name="disabledProfiles">
-      <list>
-        <option value="env-dev" />
-      </list>
     </option>
   </component>
   <component name="ProjectId" id="2Qsih500qEeSnDeI4iO56Qm213z" />
@@ -78,115 +101,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "42661fa157ea7a76b908cf4efad84b58"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;42661fa157ea7a76b908cf4efad84b58&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.myvoc.mapper.impl" />
+      <recent name="org.example.myvoc.dto" />
       <recent name="org.example.myvoc.repository.impl" />
       <recent name="org.example.myvoc.service.impl" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sulta\Documents\sultanbekaitzhanov\Projects\MyVoc\src\main\webapp" />
+      <recent name="C:\Users\sulta\Documents\sultanbekaitzhanov\Projects\MyVoc\src\main\webapp\WEB-INF" />
+    </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.75">
-    <configuration name="Tomcat 10.1.9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.9" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="MyVoc:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="99ad8bcc-e4b8-4362-905b-3bae9b061ff3" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50143" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="MyVoc:war" />
-        </option>
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Tomcat 9.0.75" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.75" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -197,8 +140,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="d16990b4-a879-426e-93eb-c0fdccfbf39d" />
-        <option name="HTTP_PORT" value="8081" />
+        <option name="BASE_DIRECTORY_NAME" value="3e08be5d-695f-41be-9986-bb1f3aafd44d" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -206,7 +148,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50700" />
+        <option name="DEBUG_PORT" value="56515" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -275,10 +217,6 @@
         </option>
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Tomcat Server.Tomcat 10.1.9" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.75" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -292,6 +230,9 @@
       <workItem from="1686201502894" duration="596000" />
       <workItem from="1686205527019" duration="3940000" />
       <workItem from="1686212496076" duration="10236000" />
+      <workItem from="1686319416539" duration="8126000" />
+      <workItem from="1686365789391" duration="35888000" />
+      <workItem from="1686417360897" duration="3390000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1686155713459</created>
@@ -335,5 +276,16 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="MV-0001 | added groups list API" />
     <option name="LAST_COMMIT_MESSAGE" value="MV-0001 | added groups list API" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,27 +1,136 @@
 package org.example.myvoc.repository.impl;
 
+import org.example.myvoc.domain.WordCard;
+import org.example.myvoc.domain.WordMeaning;
+import org.example.myvoc.dto.GroupStatisticsDTO;
+import org.example.myvoc.dto.WordResponseDTO;
+import org.example.myvoc.enums.WordCategory;
+import org.example.myvoc.enums.WordLearningState;
 import org.example.myvoc.repository.WordCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class WordCardRepositoryImpl implements WordCardRepository {
 
+    private final String SELECT_DISTINCT_CODES = "SELECT DISTINCT wc.code FROM word_card wc ORDER BY wc.code ASC";
+    private final String SELECT_WORD_CARDS_BY_GROUP_CODE =
+            "SELECT * " +
+            "FROM word_card wc " +
+            "WHERE wc.code = :code " +
+            "ORDER BY wc.state ASC, wc.last_time_picked DESC " +
+            "LIMIT 10";
+    private final String UPDATE_LAST_TIME_PICKED = "UPDATE word_card SET last_time_picked = now(), state = :state WHERE id = :id";
+    private final String SELECT_STATISTICS = "SELECT\n" +
+            "    (SELECT COUNT(*)\n" +
+            "        FROM word_card wc\n" +
+            "        WHERE state = '1' AND wc.code = :code) AS learning,\n" +
+            "    (SELECT COUNT(*)\n" +
+            "     FROM word_card wc\n" +
+            "     WHERE state = '2' AND wc.code = :code) AS mastered,\n" +
+            "    (SELECT COUNT(*)\n" +
+            "     FROM word_card wc\n" +
+            "     WHERE state = '3' AND wc.code = :code) AS reviewing,\n" +
+            "    (SELECT COUNT(*)\n" +
+            "     FROM word_card wc\n" +
+            "     WHERE wc.code = :code) AS total";
+    private static final String SELECT_BY_ID = "SELECT * FROM word_card wc WHERE wc.id = :id";
+    private static final String SELECT_MEANINGS_BY_ID = "SELECT wm.* FROM word_card wc INNER JOIN word_meaning wm ON wm.word_card_id = wc.id WHERE wc.id = :id";
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
     public List<Integer> getDistinctGroupsSorted() {
         List<Integer> groupCodes = new ArrayList<>();
-        String sql = "SELECT DISTINCT wc.code FROM word_card wc GROUP BY wc.code ORDER BY wc.code ASC";
-        jdbcTemplate.query(sql, resultSet -> {
-            int code = resultSet.getInt("code");
+        jdbcTemplate.query(SELECT_DISTINCT_CODES, rs -> {
+            int code = rs.getInt("code");
             groupCodes.add(code);
         });
         return groupCodes;
+    }
+
+    @Override
+    public List<WordCard> getWordCardsByCodeOrderByStateDescLastTimePickedDesc(int code) {
+        List<WordCard> wordCardList = new ArrayList<>();
+        Map<String, Object> argumentsMap = new HashMap<>();
+        argumentsMap.put("code", code);
+        jdbcTemplate.query(SELECT_WORD_CARDS_BY_GROUP_CODE, argumentsMap, rs -> {
+            WordCard wordCard = new WordCard();
+            wordCard.setWord(rs.getString("word"));
+            wordCard.setState(WordLearningState.values()[(rs.getInt("state"))]);
+            wordCard.setId(UUID.fromString(rs.getString("id")));
+            wordCard.setLastTimePicked(rs.getTimestamp("last_time_picked").toInstant());
+            wordCard.setCode(rs.getInt("code"));
+            wordCardList.add(wordCard);
+        });
+        return wordCardList;
+    }
+
+    @Override
+    public void save(WordCard pickedCard) {
+        Map<String, Object> argumentsMap = new HashMap<>();
+        argumentsMap.put("id", pickedCard.getId());
+        argumentsMap.put("state", pickedCard.getState().getPriority());
+        jdbcTemplate.update(UPDATE_LAST_TIME_PICKED, argumentsMap);
+    }
+
+    @Override
+    public GroupStatisticsDTO getStatisticsByGroupCode(int code) {
+        GroupStatisticsDTO dto = new GroupStatisticsDTO();
+        Map<String, Object> argumentsMap = new HashMap<>();
+        argumentsMap.put("code", code);
+        jdbcTemplate.query(SELECT_STATISTICS, argumentsMap, rs -> {
+            dto.setTotal(rs.getInt("total"));
+            dto.setMasteredCount(rs.getInt("mastered"));
+            dto.setLearningCount(rs.getInt("learning"));
+            dto.setReviewingCount(rs.getInt("reviewing"));
+        });
+        return dto;
+    }
+
+    @Override
+    public Optional<WordCard> findById(UUID id) {
+        Map<String, Object> argumentsMap = new HashMap<>();
+        argumentsMap.put("id", id);
+        Optional<WordCard> found = Optional.ofNullable(jdbcTemplate.query(SELECT_BY_ID, argumentsMap, rs -> {
+            WordCard wc = new WordCard();
+            while(rs.next()) {
+                wc.setId(UUID.fromString(rs.getString("id")));
+                wc.setWord(rs.getString("word"));
+                wc.setCode(rs.getInt("code"));
+                wc.setState(WordLearningState.values()[(rs.getInt("state"))]);
+                wc.setLastTimePicked(rs.getTimestamp("last_time_picked").toInstant());
+            }
+            return wc;
+        }));
+        found.ifPresent(wc -> {
+            wc.setMeanings(getMeaningsById(wc.getId()));
+        });
+        return found;
+    }
+
+    private List<WordMeaning> getMeaningsById(UUID id) {
+        List<WordMeaning> meanings = new ArrayList<>();
+        Map<String, Object> argumentsMap = new HashMap<>();
+        argumentsMap.put("id", id);
+        jdbcTemplate.query(SELECT_MEANINGS_BY_ID, argumentsMap, resultSet -> {
+            WordMeaning wm = new WordMeaning();
+            wm.setMeaning(resultSet.getString("meaning"));
+            wm.setUsageExample(resultSet.getString("example"));
+            wm.setCategory(WordCategory.values()[(resultSet.getInt("word_category"))]);
+            wm.setTranslation(resultSet.getString("translation"));
+            meanings.add(wm);
+        });
+        return meanings;
     }
 }

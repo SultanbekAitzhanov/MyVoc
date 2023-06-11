@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
 
@@ -19,8 +20,8 @@ import javax.sql.DataSource;
 public class RootConfig {
 
     @Bean
-    public JdbcTemplate jdbcTemplate(@Autowired DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
+    public NamedParameterJdbcTemplate jdbcTemplate(@Autowired DataSource dataSource) {
+        return new NamedParameterJdbcTemplate(dataSource);
     }
 
     @Bean

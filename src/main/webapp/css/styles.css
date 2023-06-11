@@ -1,0 +1,241 @@
+.flashcard-container {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.container-header {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+.column-offset {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.margin-container {
+    margin-top: 48px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 970px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    margin-bottom: 24px;
+}
+
+.meaning-container {
+    margin-top: 24px;
+}
+
+.flashcard-word-text {
+    margin-top: -43px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+.text-white {
+    font-family: CustomFont, Arial, sans-serif;
+    color: #fff;
+}
+
+.word-text {
+    color: #4e4b50;
+    text-align: center;
+    font-size: 41px;
+    margin-bottom: 12px;
+    font-family: CustomFont, Arial, sans-serif;
+    text-decoration: none;
+}
+
+.flashcard-link {
+    text-decoration: none;
+}
+
+.card-footer-success {
+    padding: 12px 20px;
+    background-color: #bcf5cc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    color: #37b95c;
+}
+
+.flashcard-header {
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.go-to-group-list {
+    font-size: 28px;
+    color: #fff;
+}
+
+.add-new-word-container {
+    position: relative;
+}
+
+.add-new-word-header {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.add-new-word-button {
+    font-size: 28px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.card-footer-danger {
+    padding: 12px 20px;
+    background-color: #fccfd0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    color: #d9595d;
+}
+
+.flashcard {
+    position: relative;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 65px 20px 20px;
+    border-radius: 15px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.form-group {
+    margin: 20px 15px 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #f2f2f3;
+    border-radius: 8px;
+}
+
+.form-tile {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.form-label {
+    margin-bottom: 5px;
+}
+
+.form-input {
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 7px;
+    padding:10px;
+    font-family: Arial, sans-serif;
+}
+
+.form-word-input {
+    height: 40px;
+    width: 40%;
+    box-sizing: border-box;
+    border-radius: 7px;
+    font-family: Arial, sans-serif;
+    padding:10px;
+}
+
+.form-submit-button {
+    border-radius: 6px;
+    background-color: #37b95c;
+    padding: 10px;
+    color: #f1f1f1;
+    font-size: large;
+}
+
+.form-submit-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-input-example {
+    width: 100%;
+    border-radius: 7px;
+    box-sizing: border-box;
+    height: 80px;
+    padding:10px;
+    font-family: Arial, sans-serif;
+}
+
+.label-flashcard {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #9b989e;
+    background-color: #f2f2f3;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: CustomFont, Arial, sans-serif;
+    padding: 7px 13px;
+}
+
+
+
+.container-button {
+    background-color: #9df1ac;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+.container-text {
+    color: black;
+    text-align: center;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.button-text {
+    color: #ffffff;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #37b95c;
+    padding: 20px;
+    display: inline-block;
+}
+
+body {
+    background-color: #b94f11;
+    font-family: CustomFont, ui-rounded;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/fonts/Nunito-VariableFont_wght.ttf') format('truetype');
+}

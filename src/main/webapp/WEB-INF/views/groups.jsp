@@ -8,16 +8,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
+<style>
+    li {
+        list-style: none;
+    }
+</style>
 <head>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>">
     <title>Title</title>
 </head>
 <body>
     <c:forEach items="${integerList}" var="groupNumber">
-        <li id="group_<c:out value="${groupNumber}"/>">
-            <a href="<c:url value="/groups/${groupNumber}"/>">
-                GROUP # ${groupNumber}
-            </a>
+    <a class="container-text" href="<c:url value="/group/${groupNumber}"/>">
+        <li class="container-button" id="group_<c:out value="${groupNumber}"/>">
+            <div class="container-text">
+                <div>
+                    GROUP # ${groupNumber} WORDS
+                </div>
+            </div>
         </li>
+    </a>
     </c:forEach>
 </body>
 </html>
