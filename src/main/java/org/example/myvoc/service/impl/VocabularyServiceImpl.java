@@ -3,8 +3,10 @@ package org.example.myvoc.service.impl;
 import org.example.myvoc.domain.WordCard;
 import org.example.myvoc.dto.AnswerResponseDTO;
 import org.example.myvoc.dto.GroupStatisticsDTO;
+import org.example.myvoc.dto.WordRequestDTO;
 import org.example.myvoc.dto.WordResponseDTO;
 import org.example.myvoc.enums.WordLearningState;
+import org.example.myvoc.mapper.WordCardMapper;
 import org.example.myvoc.mapper.WordMeaningMapper;
 import org.example.myvoc.repository.WordCardRepository;
 import org.example.myvoc.service.VocabularyService;
@@ -25,6 +27,8 @@ public class VocabularyServiceImpl implements VocabularyService {
     private WordCardRepository wordCardRepository;
     @Autowired
     private WordMeaningMapper wordMeaningMapper;
+    @Autowired
+    private WordCardMapper wordCardMapper;
     private static final String WORD_NOT_FOUND_ERROR_MESSAGE = "Введенное слово не найдено среди сохраненных";
 
     @Override
@@ -57,6 +61,14 @@ public class VocabularyServiceImpl implements VocabularyService {
                 () -> new RuntimeException(WORD_NOT_FOUND_ERROR_MESSAGE));
         updateWordStatus(found, known);
         wordCardRepository.save(found);
+    }
+
+    @Override
+    public void create(WordRequestDTO dto) {
+        if (wordCardRepository.existsByWord(dto.getWord())){return;}
+        WordCard word = wordCardMapper.mapToEntity(dto);
+        word.setId(UUID.randomUUID());
+        wordCardRepository.create(word);
     }
 
     private void updateWordStatus(WordCard word, boolean answerResult){

@@ -18,4 +18,8 @@ public interface WordCardRepository {
     GroupStatisticsDTO getStatisticsByGroupCode(int code);
 
     Optional<WordCard> findById(UUID id);
+
+    boolean existsByWord(String word);
+
+    void create(WordCard word);
 }

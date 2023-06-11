@@ -15,4 +15,14 @@ public class WordMeaningMapperImpl implements WordMeaningMapper {
                 wordMeaning.getUsageExample(),
                 wordMeaning.getTranslation());
     }
+
+    @Override
+    public WordMeaning toEntity(WordMeaningDTO dto) {
+        return WordMeaning.builder()
+                .meaning(dto.getMeaning())
+                .category(dto.getCategory())
+                .usageExample(dto.getExample())
+                .translation(dto.getTranslation())
+                .build();
+    }
 }

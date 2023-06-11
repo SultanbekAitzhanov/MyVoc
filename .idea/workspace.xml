@@ -9,36 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="006df0bd-a232-439d-a568-b0103ff02bc9" name="Changes" comment="MV-0001 | added implementation of getting group code list">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/CharacterEncodingFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/AnswerResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/GroupStatisticsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordMeaningDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordMeaningMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordMeaningMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/backflashcard.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/flash_card.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/word.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
+    <list default="true" id="006df0bd-a232-439d-a568-b0103ff02bc9" name="Changes" comment="MV-0002 | added flashcard and saving new word mock API">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordCardMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordCardMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordMeaningRepostiory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordMeaningRepostioryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/MyVocDispatcherServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/MyVocDispatcherServletInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/RootConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordLearningState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/enums/WordLearningState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordMeaningMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordMeaningMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordMeaningMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordMeaningMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordCardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordCardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/VocabularyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/VocabularyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/impl/VocabularyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/impl/VocabularyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groups.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groups.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +37,7 @@
         <option value="Enum" />
         <option value="CSS File" />
         <option value="Jsp File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -119,9 +106,10 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.myvoc.repository.impl" />
+      <recent name="org.example.myvoc.mapper" />
       <recent name="org.example.myvoc.mapper.impl" />
       <recent name="org.example.myvoc.dto" />
-      <recent name="org.example.myvoc.repository.impl" />
       <recent name="org.example.myvoc.service.impl" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -131,6 +119,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.75" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.75" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/groups" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="MyVoc:war">
@@ -232,7 +221,7 @@
       <workItem from="1686212496076" duration="10236000" />
       <workItem from="1686319416539" duration="8126000" />
       <workItem from="1686365789391" duration="35888000" />
-      <workItem from="1686417360897" duration="3390000" />
+      <workItem from="1686417360897" duration="10467000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1686155713459</created>
@@ -255,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686215998681</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="MV-0002 | added flashcard and saving new word mock API">
+      <created>1686451408127</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686451408127</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,15 +271,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="MV-0001 | added groups list API" />
-    <option name="LAST_COMMIT_MESSAGE" value="MV-0001 | added groups list API" />
+    <MESSAGE value="MV-0002 | added flashcard and saving new word mock API" />
+    <option name="LAST_COMMIT_MESSAGE" value="MV-0002 | added flashcard and saving new word mock API" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java</url>
-          <line>71</line>
+          <line>66</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordMeaningRepostioryImpl.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

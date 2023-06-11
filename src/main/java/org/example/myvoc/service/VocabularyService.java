@@ -1,6 +1,7 @@
 package org.example.myvoc.service;
 
 import org.example.myvoc.dto.AnswerResponseDTO;
+import org.example.myvoc.dto.WordRequestDTO;
 import org.example.myvoc.dto.WordResponseDTO;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface VocabularyService {
     AnswerResponseDTO backFlashCard(UUID id);
 
     void submitAnswer(UUID id, boolean known);
+
+    void create(WordRequestDTO wordRequestDTO);
 }

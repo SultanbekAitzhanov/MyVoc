@@ -1,5 +1,6 @@
 package org.example.myvoc.repository.impl;
 
+import jakarta.annotation.PostConstruct;
 import org.example.myvoc.domain.WordCard;
 import org.example.myvoc.domain.WordMeaning;
 import org.example.myvoc.dto.GroupStatisticsDTO;
@@ -7,10 +8,13 @@ import org.example.myvoc.dto.WordResponseDTO;
 import org.example.myvoc.enums.WordCategory;
 import org.example.myvoc.enums.WordLearningState;
 import org.example.myvoc.repository.WordCardRepository;
+import org.example.myvoc.repository.WordMeaningRepostiory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -21,7 +25,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public class WordCardRepositoryImpl implements WordCardRepository {
+public class WordCardRepositoryImpl implements WordCardRepository, InitializingBean {
 
     private final String SELECT_DISTINCT_CODES = "SELECT DISTINCT wc.code FROM word_card wc ORDER BY wc.code ASC";
     private final String SELECT_WORD_CARDS_BY_GROUP_CODE =
@@ -46,8 +50,15 @@ public class WordCardRepositoryImpl implements WordCardRepository {
             "     WHERE wc.code = :code) AS total";
     private static final String SELECT_BY_ID = "SELECT * FROM word_card wc WHERE wc.id = :id";
     private static final String SELECT_MEANINGS_BY_ID = "SELECT wm.* FROM word_card wc INNER JOIN word_meaning wm ON wm.word_card_id = wc.id WHERE wc.id = :id";
+    private static Long wordCardCount;
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
+    @Autowired
+    private WordMeaningRepostiory wordMeaningRepostiory;
+
+    private Long count() {
+        return jdbcTemplate.queryForObject("SELECT COUNT(*) AS count FROM word_card", new HashMap<String,Object>(), Long.class);
+    }
 
     @Override
     public List<Integer> getDistinctGroupsSorted() {
@@ -119,6 +130,26 @@ public class WordCardRepositoryImpl implements WordCardRepository {
         return found;
     }
 
+    @Override
+    public boolean existsByWord(String word) {
+        return false;
+    }
+
+    @Override
+    @Transactional
+    public void create(WordCard word) {
+        word.setState(WordLearningState.NEW_WORD);
+        word.setCode(Long.valueOf(Math.floorDiv(++wordCardCount, 30)).intValue());
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", word.getId());
+        params.put("word", word.getWord());
+        params.put("state", word.getState().getPriority());
+        params.put("code", word.getCode());
+        jdbcTemplate.update("INSERT INTO word_card (id, word, state, last_time_picked, code) " +
+                "VALUES (:id, :word, :state, now(), :code)", params);
+        wordMeaningRepostiory.saveAll(word.getMeanings());
+    }
+
     private List<WordMeaning> getMeaningsById(UUID id) {
         List<WordMeaning> meanings = new ArrayList<>();
         Map<String, Object> argumentsMap = new HashMap<>();
@@ -132,5 +163,10 @@ public class WordCardRepositoryImpl implements WordCardRepository {
             meanings.add(wm);
         });
         return meanings;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.wordCardCount = count();
     }
 }

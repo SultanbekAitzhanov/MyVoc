@@ -12,10 +12,10 @@
 <html>
   <head>
     <title>Welcome To MyVoc</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
   </head>
   <body>
-    <div class="container-header">
+    <div class="container-head">
       <h1 class="container-text">Welcome To MyVoc!</h1>
     </div>
     <div class="container-button" onclick="${pageContext.request.contextPath}/groups">
