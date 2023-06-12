@@ -140,7 +140,14 @@ public class WordCardRepositoryImpl implements WordCardRepository, InitializingB
 
     @Override
     public boolean existsByWord(String word) {
-        return false;
+        Map<String, Object> params = new HashMap<>();
+        params.put("word", word);
+        return Boolean.TRUE.equals(jdbcTemplate.query("SELECT EXISTS (SELECT * FROM word_card wc WHERE wc.word = :word) AS exists", params, rs -> {
+            if(rs.next()) {
+                return rs.getBoolean("exists");
+            }
+            return false;
+        }));
     }
 
     @Override
