@@ -18,16 +18,31 @@
     <title>Title</title>
 </head>
 <body>
-    <c:forEach items="${integerList}" var="groupNumber">
-    <a class="container-text" href="<c:url value="/group/${groupNumber}"/>">
-        <li class="container-button" id="group_<c:out value="${groupNumber}"/>">
-            <div class="container-text">
-                <div>
-                    GROUP # ${groupNumber} WORDS
+    <div class="margin-container">
+        <div class="row">
+            <c:forEach items="${groupDTOList}" var="groupNumber">
+                <div class="group-column">
+                    <div class="word-group-container">
+                        <a class="go-to-group" href="<c:url value="/group/${groupNumber.code}"/>">
+                            <div class="word-group-text">
+                                <div>
+                                    GROUP # ${groupNumber.code} WORDS
+                                </div>
+                            </div>
+                            <div class="word-group-progress-text">
+                                <c:out value="${groupNumber.mastered}"/> out of <c:out value="${groupNumber.total}"/> mastered
+                            </div>
+                            <div class="progress-bar">
+                                <c:set var="total" value="${groupNumber.total}" />
+                                <c:set var="mastered_success" value="${groupNumber.mastered}"/>
+                                <c:set var="mastered_progress" value="${(mastered_success/total)*100}"/>
+                                <div class="progress" style="width: ${mastered_progress}%"></div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </a>
-    </c:forEach>
+            </c:forEach>
+        </div>
+    </div>
 </body>
 </html>

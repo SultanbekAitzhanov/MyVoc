@@ -1,22 +1,19 @@
 package org.example.myvoc.repository.impl;
 
-import jakarta.annotation.PostConstruct;
 import org.example.myvoc.domain.WordCard;
 import org.example.myvoc.domain.WordMeaning;
+import org.example.myvoc.dto.GroupDTO;
 import org.example.myvoc.dto.GroupStatisticsDTO;
-import org.example.myvoc.dto.WordResponseDTO;
 import org.example.myvoc.enums.WordCategory;
 import org.example.myvoc.enums.WordLearningState;
 import org.example.myvoc.repository.WordCardRepository;
 import org.example.myvoc.repository.WordMeaningRepostiory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +24,15 @@ import java.util.UUID;
 @Repository
 public class WordCardRepositoryImpl implements WordCardRepository, InitializingBean {
 
-    private final String SELECT_DISTINCT_CODES = "SELECT DISTINCT wc.code FROM word_card wc ORDER BY wc.code ASC";
+    private final String SELECT_GROUP_CODES_WITH_MASTERED_STATS = "SELECT t.code, COALESCE(m.mastered, 0) AS mastered, t.total\n" +
+            "FROM (SELECT wc.code, count(*) as mastered\n" +
+            "FROM word_card wc\n" +
+            "WHERE wc.state = '3'\n" +
+            "GROUP BY wc.code) as m\n" +
+            "RIGHT JOIN (SELECT wc.code, count(*) as total\n" +
+            "      FROM word_card wc\n" +
+            "      GROUP BY wc.code) as t ON m.code = t.code " +
+            "ORDER BY t.code";
     private final String SELECT_WORD_CARDS_BY_GROUP_CODE =
             "SELECT * " +
             "FROM word_card wc " +
@@ -61,13 +66,16 @@ public class WordCardRepositoryImpl implements WordCardRepository, InitializingB
     }
 
     @Override
-    public List<Integer> getDistinctGroupsSorted() {
-        List<Integer> groupCodes = new ArrayList<>();
-        jdbcTemplate.query(SELECT_DISTINCT_CODES, rs -> {
-            int code = rs.getInt("code");
-            groupCodes.add(code);
+    public List<GroupDTO> getDistinctGroupsSorted() {
+        List<GroupDTO> groupDTOList = new ArrayList<>();
+        jdbcTemplate.query(SELECT_GROUP_CODES_WITH_MASTERED_STATS, rs -> {
+            GroupDTO groupDTO = new GroupDTO();
+            groupDTO.setCode(rs.getInt("code"));
+            groupDTO.setTotal(rs.getInt("total"));
+            groupDTO.setMastered(rs.getInt("mastered"));
+            groupDTOList.add(groupDTO);
         });
-        return groupCodes;
+        return groupDTOList;
     }
 
     @Override

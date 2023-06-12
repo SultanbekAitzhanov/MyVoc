@@ -11,6 +11,38 @@
     margin: 20px;
 }
 
+.group-column {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.word-group-text {
+    color: black;
+    text-decoration: none;
+    text-align: left;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 23px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.go-to-group {
+    text-decoration: none;
+}
+
+.word-group-container {
+    margin-bottom: 12px;
+    background-color: white;
+    padding: 30px 20px 10px;
+    border-radius: 10px;
+}
+
 .column-offset {
     position: relative;
     min-height: 1px;
@@ -20,9 +52,8 @@
 
 .margin-container {
     margin-top: 48px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 970px;
+    margin-right: 25%;
+    margin-left: 25%;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -41,6 +72,7 @@
 
 .flashcard-word-text {
     margin-top: -43px;
+    text-align: center;
 }
 
 .progress {
@@ -122,7 +154,7 @@
 .flashcard {
     position: relative;
     background-color: #ffffff;
-    text-align: center;
+    text-align: left;
     padding: 65px 20px 20px;
     border-radius: 15px;
 }
@@ -143,6 +175,10 @@
 .form-tile {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.word-group {
+
 }
 
 .form-label {

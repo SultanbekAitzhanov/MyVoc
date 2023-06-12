@@ -2,6 +2,7 @@ package org.example.myvoc.service.impl;
 
 import org.example.myvoc.domain.WordCard;
 import org.example.myvoc.dto.AnswerResponseDTO;
+import org.example.myvoc.dto.GroupDTO;
 import org.example.myvoc.dto.GroupStatisticsDTO;
 import org.example.myvoc.dto.WordRequestDTO;
 import org.example.myvoc.dto.WordResponseDTO;
@@ -32,7 +33,7 @@ public class VocabularyServiceImpl implements VocabularyService {
     private static final String WORD_NOT_FOUND_ERROR_MESSAGE = "Введенное слово не найдено среди сохраненных";
 
     @Override
-    public List<Integer> getWordGroups() {
+    public List<GroupDTO> getWordGroups() {
         return wordCardRepository.getDistinctGroupsSorted();
     }
 

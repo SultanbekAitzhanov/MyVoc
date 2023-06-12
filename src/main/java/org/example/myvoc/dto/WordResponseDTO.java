@@ -3,7 +3,6 @@ package org.example.myvoc.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.myvoc.enums.WordLearningState;
 
 import java.util.UUID;
 

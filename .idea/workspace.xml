@@ -9,21 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="006df0bd-a232-439d-a568-b0103ff02bc9" name="Changes" comment="MV-0002 | added flashcard and saving new word mock API">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordCardMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordCardMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordMeaningRepostiory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordMeaningRepostioryImpl.java" afterDir="false" />
+    <list default="true" id="006df0bd-a232-439d-a568-b0103ff02bc9" name="Changes" comment="MV-0002 | added saving new word implementation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/GroupDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordMeaningMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/WordMeaningMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordMeaningMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/mapper/impl/WordMeaningMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/dto/WordResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordCardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/WordCardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/VocabularyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/VocabularyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/impl/VocabularyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/myvoc/service/impl/VocabularyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/backflashcard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/backflashcard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groups.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groups.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -221,7 +217,7 @@
       <workItem from="1686212496076" duration="10236000" />
       <workItem from="1686319416539" duration="8126000" />
       <workItem from="1686365789391" duration="35888000" />
-      <workItem from="1686417360897" duration="10467000" />
+      <workItem from="1686417360897" duration="17271000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1686155713459</created>
@@ -251,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686451408127</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="MV-0002 | added saving new word implementation">
+      <created>1686459116900</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686459116901</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,20 +275,16 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="MV-0001 | added groups list API" />
     <MESSAGE value="MV-0002 | added flashcard and saving new word mock API" />
-    <option name="LAST_COMMIT_MESSAGE" value="MV-0002 | added flashcard and saving new word mock API" />
+    <MESSAGE value="MV-0002 | added saving new word implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="MV-0002 | added saving new word implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/myvoc/HomeController.java</url>
-          <line>66</line>
+          <line>68</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordCardRepositoryImpl.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/myvoc/repository/impl/WordMeaningRepostioryImpl.java</url>

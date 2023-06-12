@@ -1,5 +1,6 @@
 package org.example.myvoc;
 
+import org.example.myvoc.dto.GroupDTO;
 import org.example.myvoc.dto.WordMeaningDTO;
 import org.example.myvoc.dto.WordRequestDTO;
 import org.example.myvoc.service.VocabularyService;
@@ -25,8 +26,9 @@ public class HomeController {
 
 
     @GetMapping("groups")
-    public List<Integer> groups() {
-        return vocabularyService.getWordGroups();
+    public String groups(Model model) {
+        model.addAttribute(vocabularyService.getWordGroups());
+        return "groups";
     }
 
     @GetMapping("group/{code}")

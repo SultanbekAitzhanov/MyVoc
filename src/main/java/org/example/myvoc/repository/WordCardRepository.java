@@ -1,6 +1,7 @@
 package org.example.myvoc.repository;
 
 import org.example.myvoc.domain.WordCard;
+import org.example.myvoc.dto.GroupDTO;
 import org.example.myvoc.dto.GroupStatisticsDTO;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.UUID;
 
 public interface WordCardRepository {
 
-    List<Integer> getDistinctGroupsSorted();
+    List<GroupDTO> getDistinctGroupsSorted();
 
     List<WordCard> getWordCardsByCodeOrderByStateDescLastTimePickedDesc(int code);
 

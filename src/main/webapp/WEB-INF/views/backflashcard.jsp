@@ -43,7 +43,7 @@
                             I knew this word
                         </a>
                         <a class="card-footer-danger" href="/group/${answerResponseDTO.code}/backflashcard/${answerResponseDTO.id}/answer?known=false" data-method="post">
-                            I didn't knew this word
+                            I didn't know this word
                         </a>
                     </div>
 
